@@ -1,0 +1,32 @@
+<div class="author">
+  <h1 class="author__heading">Blog da Industria</h1>
+  <p class="author__body">Este é o nosso ponto de encontro para falar sobre o mundo industrial. <br>Notícias, aprendizados, tecnologia, eficiência e tudo o que move a produção e o desenvolvimento do setor.</p>
+</div>
+
+<img src="/img/Pink-Floyd_Animals-orig.jpg" alt="person looking out through window" class="hero-image" width="981" height="528">
+
+<section class="articles">
+  <h2 class="articles__heading">Ultimas postagens</h2>
+
+  <ul class="article-ul">
+    <% data.forEach(post => { %>
+      <li>
+        <a href="/post/<%= post._id %>">
+          <span><%= post.title %></span>
+          <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+
+
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination">&lt; Ver postagens antigas</a>
+  <% } %>
+ 
+
+  
+
+
+
+</section>

@@ -1,0 +1,21 @@
+<header class="header">
+  <a href="/" class="header__logo">Gerenciamento</a>
+
+  <nav class="header__nav">
+    <ul>
+      <li>
+        <a href="/" class="">Home</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <% if (token) { %>
+  <div class="header__button">
+    <a href="/logout">
+      Logout
+    </a>
+  </div>
+  <% } %>
+
+</header>
