@@ -1,2 +1,6 @@
+<% if (data.image) { %>
+  <img src="/uploads/<%= data.image %>" alt="<%= data.title %>" class="post-image">
+<% } %>
+
 <h1><%= data.title %></h1>
 <article class="article"><%= data.body %></article>

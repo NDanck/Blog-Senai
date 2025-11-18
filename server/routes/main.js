@@ -48,7 +48,7 @@ router.get('/post/:id', async (req, res) => {
 
     const locals = {
       title: data.title,
-      description: "Simple Blog created with NodeJs, Express & MongoDb.",
+      description: "Blog da Industria",
     }
 
     res.render('post', { 

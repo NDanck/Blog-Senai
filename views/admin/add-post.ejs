@@ -1,16 +1,20 @@
-<a href="/dashboard">&larr; Back</a>
+<a href="/dashboard">&larr; Voltar</a>
+
 <div class="admin-title">
-  <h2>Add New Post</h2>
+  <h2>Adicionar novo post</h2>
 </div>
 
-<form action="/add-post" method="POST">
+<form action="/add-post" method="POST" enctype="multipart/form-data">
 
-  <label for="title"><b>Title</b></label>
+  <label for="title"><b>Titulo</b></label>
   <input type="text" placeholder="Post Title" name="title">
 
-  <label for="body"><b>Content</b></label>
+  <label for="body"><b>Conteudo</b></label>
   <textarea name="body" cols="50" rows="10"></textarea>
 
-  <input type="submit" value="Add" class="btn">
+  <label for="image"><b>Imagem</b></label>
+  <input type="file" name="image" accept="image/*">
+
+  <input type="submit" value="Adicionar" class="btn">
 
 </form>

@@ -111,19 +111,18 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 
 
 
-router.post('/add-post', authMiddleware, async (req, res) => {
-  try {
-    try {
-      const newPost = new Post({
-        title: req.body.title,
-        body: req.body.body
-      });
+const upload = require('../middleware/upload');
 
-      await Post.create(newPost);
-      res.redirect('/dashboard');
-    } catch (error) {
-      console.log(error);
-    }
+router.post('/add-post', authMiddleware, upload.single('image'), async (req, res) => {
+  try {
+    const newPost = new Post({
+      title: req.body.title,
+      body: req.body.body,
+      image: req.file ? req.file.filename : null
+    });
+
+    await newPost.save();
+    res.redirect('/dashboard');
 
   } catch (error) {
     console.log(error);
@@ -156,22 +155,27 @@ router.get('/edit-post/:id', authMiddleware, async (req, res) => {
 
 
 
-router.put('/edit-post/:id', authMiddleware, async (req, res) => {
+router.put('/edit-post/:id', authMiddleware, upload.single('image'), async (req, res) => {
   try {
-
-    await Post.findByIdAndUpdate(req.params.id, {
+    const updateData = {
       title: req.body.title,
       body: req.body.body,
       updatedAt: Date.now()
-    });
+    };
 
-    res.redirect(`/edit-post/${req.params.id}`);
+    if (req.file) {
+      updateData.image = req.file.filename;
+    }
 
-  } catch (error) {
-    console.log(error);
+    await Post.findByIdAndUpdate(req.params.id, updateData);
+
+    res.redirect('/dashboard');
+
+  } catch (err) {
+    console.log(err);
   }
-
 });
+
 
 
 

@@ -1,6 +1,7 @@
-<a href="/dashboard">&larr; Back</a>
+<a href="/dashboard">&larr; Voltar</a>
+
 <div class="admin-title">
-  <h2>View / Edit Post</h2>
+  <h2>Ver / Editar post</h2>
 
   <form action="/delete-post/<%= data._id %>?_method=DELETE" method="POST">
     <input type="submit" value="Delete" class="btn-delete btn">
@@ -8,14 +9,22 @@
 
 </div>
 
-<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
+<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
-  <label for="title"><b>Title</b></label>
+  <label for="title"><b>Titulo</b></label>
   <input type="text" placeholder="Post Title" name="title" value="<%= data.title %>">
 
-  <label for="body"><b>Content</b></label>
+  <label for="body"><b>Conteudo</b></label>
   <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
 
-  <input type="submit" value="Update" class="btn">
+  <label for="image"><b>Imagem</b></label>
+  <input type="file" name="image" accept="image/*">
+
+  <% if (data.image) { %>
+    <p>Imagem atual:</p>
+    <img src="/uploads/<%= data.image %>" width="200">
+  <% } %>
+
+  <input type="submit" value="Atualizar" class="btn">
 
 </form>
