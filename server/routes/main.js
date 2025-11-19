@@ -6,8 +6,8 @@ const Post = require('../models/Post');
 router.get('', async (req, res) => {
   try {
     const locals = {
-      title: "NodeJs Blog",
-      description: "Simple Blog created with NodeJs, Express & MongoDb."
+      title: "Blog da Industria",
+      description: "Blog com as ultimas noticias da industria."
     }
 
     let perPage = 10;
@@ -18,8 +18,6 @@ router.get('', async (req, res) => {
     .limit(perPage)
     .exec();
 
-    // Count is deprecated - please use countDocuments
-    // const count = await Post.count();
     const count = await Post.countDocuments({});
     const nextPage = parseInt(page) + 1;
     const hasNextPage = nextPage <= Math.ceil(count / perPage);
@@ -68,7 +66,7 @@ router.post('/search', async (req, res) => {
   try {
     const locals = {
       title: "Seach",
-      description: "Simple Blog created with NodeJs, Express & MongoDb."
+      description: "Blog com as ultimas noticias da industria."
     }
 
     let searchTerm = req.body.searchTerm;
@@ -91,14 +89,6 @@ router.post('/search', async (req, res) => {
     console.log(error);
   }
 
-});
-
-
-
-router.get('/about', (req, res) => {
-  res.render('about', {
-    currentRoute: '/about'
-  });
 });
 
 module.exports = router;

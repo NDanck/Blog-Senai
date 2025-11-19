@@ -4,6 +4,7 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const upload = require('../middleware/upload');
 
 const adminLayout = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET;
@@ -30,7 +31,7 @@ router.get('/login', async (req, res) => {
   try {
     const locals = {
       title: "Log-In",
-      description: "Simple Blog created with NodeJs, Express & MongoDb."
+      description: "Blog com as ultimas noticias da industria."
     }
 
     res.render('admin/index', { locals, layout: adminLayout });
@@ -72,7 +73,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
   try {
     const locals = {
       title: 'Dashboard',
-      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+      description: 'Blog com as ultimas noticias da industria.'
     }
 
     const data = await Post.find();
@@ -94,10 +95,9 @@ router.get('/add-post', authMiddleware, async (req, res) => {
   try {
     const locals = {
       title: 'Add Post',
-      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+      description: 'Blog com as ultimas noticias da industria.'
     }
 
-    const data = await Post.find();
     res.render('admin/add-post', {
       locals,
       layout: adminLayout
@@ -111,7 +111,6 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 
 
 
-const upload = require('../middleware/upload');
 
 router.post('/add-post', authMiddleware, upload.single('image'), async (req, res) => {
   try {
