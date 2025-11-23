@@ -3,24 +3,31 @@
 <form action="/login" method="POST">
 
   <label for="username"><b>Nome de usuario</b></label>
-  <input type="text" placeholder="Enter Username" name="username">
+  <input type="text" placeholder="Username" name="username">
 
   <label for="password"><b>Senha</b></label>
-  <input type="password" placeholder="Enter Password" name="password">
+  <input type="password" placeholder="Senha" name="password">
+
+  <label style="display: flex; align-items: center; margin: 10px 0;">
+    <input type="checkbox" name="remember" <%= rememberedUser ? 'checked' : '' %> >
+    Lembrar login
+  </label>
 
   <input type="submit" value="Login" class="btn">
 
 </form>
 
+<!--
 <h3>Registro</h3>
 <form action="/register" method="POST">
 
   <label for="username"><b>Nome de usuario</b></label>
-  <input type="text" placeholder="Enter Username" name="username">
+  <input type="text" placeholder="Username" name="username_registro" autocomplete="new-username">
 
   <label for="password"><b>Senha</b></label>
-  <input type="password" placeholder="Enter Password" name="password">
+  <input type="password" placeholder="Senha" name="password_registro" autocomplete="new-password">
 
-  <input type="submit" value="Register" class="btn">
+  <input type="submit" value="Registrar" class="btn">
 
 </form>
+-->
