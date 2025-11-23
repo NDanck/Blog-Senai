@@ -1,0 +1,21 @@
+<a href="/dashboard">&larr; Voltar</a>
+
+<div class="admin-title">
+  <h2>Editar usuario</h2>
+
+  <form action="/delete-user/<%= data._id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete" class="btn-delete btn">
+  </form>
+</div>
+
+<form action="/edit-user/<%= data._id %>?_method=PUT" method="POST">
+
+  <label for="username"><b>Nome de usuario</b></label>
+  <input type="text" placeholder="Username" name="username_registro" autocomplete="new-username" value="<%= data.username %>">
+
+  <label for="password"><b>Senha</b></label>
+  <input type="password" placeholder="Senha" name="password_registro" autocomplete="new-password">
+
+  <input type="submit" value="Editar" class="btn">
+
+</form>
