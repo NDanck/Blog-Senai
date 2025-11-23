@@ -7,10 +7,18 @@
 <form action="/add-post" method="POST" enctype="multipart/form-data">
 
   <label for="title"><b>Titulo</b></label>
-  <input type="text" placeholder="Post Title" name="title">
+  <input type="text" placeholder="Titulo" name="title">
 
   <label for="body"><b>Conteudo</b></label>
   <textarea name="body" cols="50" rows="10"></textarea>
+
+  <label><b>Categoria</b></label>
+  <select name="category">
+    <option value="">-- Nenhuma categoria --</option>
+    <% categories.forEach(cat => { %>
+      <option value="<%= cat._id %>"><%= cat.name %></option>
+    <% }) %>
+  </select>
 
   <label for="image"><b>Imagem</b></label>
   <input type="file" name="image" accept="image/*">

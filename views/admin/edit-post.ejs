@@ -17,6 +17,19 @@
   <label for="body"><b>Conteudo</b></label>
   <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
 
+  <label><b>Categoria</b></label>
+  <select name="category">
+    <option value="">-- Nenhuma categoria --</option>
+
+    <% categories.forEach(cat => { %>
+      <option 
+        value="<%= cat._id %>" 
+        <%= data.category && data.category.toString() === cat._id.toString() ? "selected" : "" %>>
+        <%= cat.name %>
+      </option>
+    <% }) %>
+  </select>
+
   <label for="image"><b>Imagem</b></label>
   <input type="file" name="image" accept="image/*">
 
@@ -25,6 +38,6 @@
     <img src="/uploads/<%= data.image %>" width="200">
   <% } %>
 
-  <input type="submit" value="Atualizar" class="btn">
+  <input type="submit" value="Editar" class="btn">
 
 </form>
