@@ -13,6 +13,9 @@
       <li>
         <a href="/post/<%= post._id %>">
           <span><%= post.title %></span>
+          <span class="article-list__date">
+            <%= post.category ? "Categoria: " + post.category.name : "Sem categoria" %>
+          </span>
           <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
         </a>
       </li>
