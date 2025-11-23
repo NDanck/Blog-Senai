@@ -1,0 +1,18 @@
+<a href="/dashboard">&larr; Voltar</a>
+
+<div class="admin-title">
+  <h2>Ver / Editar categoria</h2>
+
+  <form action="/delete-category/<%= data._id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete" class="btn-delete btn">
+  </form>
+</div>
+
+<form action="/edit-category/<%= data._id %>?_method=PUT" method="POST">
+
+  <label for="title"><b>Nome da categoria</b></label>
+  <input type="text" placeholder="Nome da categoria" name="name" value="<%= data.name %>">
+
+  <input type="submit" value="Editar" class="btn">
+
+</form>
